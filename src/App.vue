@@ -1,8 +1,10 @@
 <template>
-<div class="fondo">
-  <!-- <Navbar/> -->
-  <router-view/>
+<div class="background">
+<router-view/>
 </div>
+
+  <!-- <Navbar/> -->
+
 
 </template>
 
@@ -16,8 +18,8 @@ export default {
 }
 </script>
 
-<style scoped>
-.fondo {
+<style>
+.background {
   background-image: url("./assets/fondo2.png");
   background-color: rgb(70, 37, 104);
   background-attachment: fixed;

@@ -1,8 +1,7 @@
 <template>
 <Header/>
 
-
-<div class="container .fondo">
+<div class="container">
     <div class="row">
 
         <Finder/>
@@ -18,25 +17,29 @@
             <!-- {{characters.results}} -->
             <div class="col-3 mt-5 mb-5 d-flex justify-content-around" v-for="(character, index) of characters" :key="index">
                 
+
+              <router-link :to="`/characters/${character.id}`">
                 <div class="mycard text-center">
 
+
+
                 <img class="imgCard" :src="character.image" alt="">
-                <h3 class="characterName">{{character.name}}</h3>
+                <h3 class="character-name">{{character.name}}</h3>
 
                 <span v-if="character.species === 'Human'" class="dotgreen"></span>
-                <span v-else class="dotred"></span>
+                <span v-else class="dotblue"></span>
 
-                <h3 class="characterSpecies"> {{character.species}}</h3>
-                <h3 class="characterLocation">{{character.location.name}}</h3>
+                <h3 class="character-species"> {{character.species}}</h3>
+                <h3 class="character-origin">{{character.origin.name}}</h3>
                 <br>
                 <!-- <button class="btn btn-primary">Ver personaje</button> -->
-                <router-link :to="`/characters/${character.id}`">Ver personaje</router-link>
 
                 </div>
+              </router-link>
 
             </div>
-
     </div>
+
 </div>
 </template>
 
@@ -89,12 +92,6 @@ export default {
 
 <style scoped>
 
-.fondo {
-  background-image: url("../assets/fondo2.png");
-  background-color: rgb(70, 37, 104);
-  background-attachment: fixed;
-}
-
 h1 {
     font-size: 40px;
     font-weight: 800;
@@ -125,7 +122,12 @@ h3 {
     font-size: 20px;
 }
 
-.characterName {
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.character-name {
     font-weight: 800;
 }
 
@@ -139,20 +141,24 @@ h3 {
   left: -5px;
 }
 
-.dotred {
+.dotblue {
   height: 17px;
   width: 17px;
-  background-color: rgb(192, 6, 93);
+  background-color: #0A95AC;
   border-radius: 50%;
   display: inline-block;
   position: relative;
   left: -5px;
 }
 
-.characterSpecies {
+.character-species {
     display: inline-block;
     font-size: 19px;
     font-weight: light;
+}
+
+.character-origin {
+    font-size: 19px;
 }
 
 .imgCard {
@@ -170,6 +176,7 @@ h3 {
     border-style: solid;
     border-width: 5px;
     box-shadow: 0px 20px 40px rgb(26, 25, 25);
+    height: 360px;
     padding: 10px;
     width: 280px;
 }

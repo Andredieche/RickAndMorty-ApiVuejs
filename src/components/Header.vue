@@ -1,6 +1,6 @@
 <template>
-<div class="container">
-    <img class="img-fluid" src="../assets/logo.png" alt="RickAndMorty">
+<div class="d-flex justify-content-center">
+<img class="img-fluid" src="../assets/logo.png" alt="RickAndMorty">
 </div>
 </template>
 
@@ -10,9 +10,5 @@ export default {
 }
 </script>
 
-<style scoped>
-img {
-    display: flex;
-    justify-content: center;
-}
+<style>
 </style>
