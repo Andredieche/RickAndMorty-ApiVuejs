@@ -15,29 +15,30 @@
         
 
             <!-- {{characters.results}} -->
-            <div class="col-3 mt-5 mb-5 d-flex justify-content-around" v-for="(character, index) of characters" :key="index">
+
+            <div class="col-lg-3 col-md-6 col-sm-12 mt-5 mb-5 d-flex justify-content-around" v-for="(character, index) of characters" :key="index">
+                
+                    <router-link :to="`/characters/${character.id}`">
+                    <div class="mycard text-center">
+
+
+                    <img class="imgCard" :src="character.image" alt="">
+                    <h3 class="character-name">{{character.name}}</h3>
+
+                    <span v-if="character.species === 'Human'" class="dotgreen"></span>
+                    <span v-else class="dotblue"></span>
+
+                    <h3 class="character-species"> {{character.species}}</h3>
+                    <h3 class="character-origin">{{character.origin.name}}</h3>
+                    <br>
                 
 
-              <router-link :to="`/characters/${character.id}`">
-                <div class="mycard text-center">
-
-
-
-                <img class="imgCard" :src="character.image" alt="">
-                <h3 class="character-name">{{character.name}}</h3>
-
-                <span v-if="character.species === 'Human'" class="dotgreen"></span>
-                <span v-else class="dotblue"></span>
-
-                <h3 class="character-species"> {{character.species}}</h3>
-                <h3 class="character-origin">{{character.origin.name}}</h3>
-                <br>
-                <!-- <button class="btn btn-primary">Ver personaje</button> -->
-
-                </div>
-              </router-link>
+                    </div>
+                    </router-link>
+                
 
             </div>
+
     </div>
 
 </div>
@@ -48,7 +49,7 @@ import Header from '../components/Header.vue'
 import Finder from '../components/Finder.vue'
 
 export default {
-    // name: 'Characters',
+    
     components: {
       Header,
       Finder
@@ -76,11 +77,7 @@ export default {
     },
 
     computed: {
-        getColorSpecies() {
-            if(character.species === "human") {
 
-            }
-        }
     },
 
     created() {
@@ -97,15 +94,17 @@ h1 {
     font-weight: 800;
     color: rgb(255, 255, 255);
     display: inline;
+    position: relative;
+    left: 10px;
 }
 
 hr {
     color: greenyellow;
     border-top: 4px solid greenyellow;
-    width: 880px;
+    width: 67%;
     position: relative;
     top: -35px;
-    left: 399px;
+    left: 411px;
 }
 
 /* .line {
