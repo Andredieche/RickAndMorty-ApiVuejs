@@ -6,12 +6,39 @@
         <input 
         type="text" 
         placeholder="Find a character"
-        v-model="nameCharacter"
+        v-model='name'
         @keyup.enter="findCharacter">
         </div>
         <div class="col-1">
         <i class="fa-solid fa-magnifying-glass"></i>
         </div>
+
+
+         <!-- {{characters.results}} -->
+
+            <div class="col-lg-3 col-md-6 col-sm-12 mt-5 mb-5 d-flex justify-content-around" v-for="(filterCharacter, index) of filterCharacters" :key="index">
+                
+                    <router-link :to="`/characters/${filterCharacter.id}`">
+                    <div class="mycard text-center">
+
+
+                    <img class="imgCard" :src="filterCharacter.image" alt="">
+                    <h3 class="character-name">{{filterCharacter.name}}</h3>
+
+                    <span v-if="filterCharacter.species === 'Human'" class="dotgreen"></span>
+                    <span v-else class="dotblue"></span>
+
+                    <h3 class="character-species"> {{filterCharacter.species}}</h3>
+                    <h3 class="character-origin">{{filterCharacter.origin.name}}</h3>
+                    <br>
+                
+
+                    </div>
+                    </router-link>
+                
+
+            </div>
+
     </div>
   </div>
 
@@ -24,16 +51,22 @@ export default {
   },
   data() {
     return {
-      nameCharacter: ''
+      name: '',
+      status: '',
+      filterCharacters: []
     };
   },
   methods: {
     async findCharacter() {
       try {
-        console.log(llegue);
-        const data = await fetch();
-        const characterData = await data.json(); //arreglar esto
-        this.nameCharacter = characterData;
+        console.log('llegue');
+        const data = await fetch(`https://rickandmortyapi.com/api/character/?name=${this.name}`); //&status=${this.status}
+        const searchData = await data.json(); 
+        console.log("searchData", searchData);
+        this.name = searchData;
+        this.status = searchData;
+        this.filterCharacters = searchData.results;
+
       } catch (error) {
         console.log(error);
         throw error;
@@ -78,7 +111,71 @@ i {
   /* right: 325px; */
 }
 
+h3 {
+    color: white;
+    font-size: 20px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
 .search {
   height: ;
+}
+
+.character-name {
+    font-weight: 800;
+}
+
+.dotgreen {
+  height: 17px;
+  width: 17px;
+  background-color: rgb(6, 192, 6);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  left: -5px;
+}
+
+.dotblue {
+  height: 17px;
+  width: 17px;
+  background-color: #0A95AC;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  left: -5px;
+}
+
+.character-species {
+    display: inline-block;
+    font-size: 19px;
+    font-weight: light;
+}
+
+.character-origin {
+    font-size: 19px;
+}
+
+.imgCard {
+    width: 150px;
+    border-radius: 100px;
+    position: relative;
+    top: -35px;
+}
+
+.mycard {
+    background-color: #16abc9a1;
+    border-color: #D2DA4B;
+    /* border-color: rgb(106, 14, 149); */
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 5px;
+    box-shadow: 0px 20px 40px rgb(26, 25, 25);
+    height: 360px;
+    padding: 10px;
+    width: 280px;
 }
 </style>
