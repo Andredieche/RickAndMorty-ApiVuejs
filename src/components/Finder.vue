@@ -3,20 +3,27 @@
   <div class="container  mt-5 mb-5">
     <div class="row">
       <div class="col-11">
+
+        <!-- <form @submit="findCharacter"> -->
         <input 
         type="text" 
         placeholder="Find a character"
         v-model='name'
         @keyup.enter="findCharacter">
         </div>
+
         <div class="col-1">
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-magnifying-glass" @click="findCharacter"></i>
         </div>
+        <!-- </form> -->
+
+        
 
 
          <!-- {{characters.results}} -->
 
             <div class="col-lg-3 col-md-6 col-sm-12 mt-5 mb-5 d-flex justify-content-around" v-for="(filterCharacter, index) of filterCharacters" :key="index">
+
                 
                     <router-link :to="`/characters/${filterCharacter.id}`">
                     <div class="mycard text-center">
@@ -81,7 +88,7 @@ input {
     background-color: rgba(100, 87, 158, 0.698);
     border: none;
     border-radius: 5px;
-    color: white;
+    color: rgb(238, 238, 238);
     font-size: 25px;
     height: 70px;
     width: 1px;
@@ -93,18 +100,31 @@ input[type=text] {
   padding: 12px 15px;
   margin: 8px 0;
   box-sizing: border-box;
-  background: '../assets/fondo2.png';
-  /* background-position: 10px 10px; */
-  /* padding-left: 40px; */
+}
+
+input[type=text]:focus {
+   outline: none;
+   background-color: rgba(100, 87, 158, 0.842);
 }
 
 ::placeholder {
-    color: rgb(228, 228, 228);
+    color: rgba(199, 199, 199, 0.265);
 }
 
 i {
   font-size: 35px;
-  color: rgba(190, 190, 190, 0.685);
+  color: rgba(190, 190, 190, 0.579);
+  cursor: pointer;
+  position: relative;
+  top: 25px;
+  left: 25px;
+  /* right: 325px; */
+}
+
+i:hover {
+  font-size: 35px;
+  color: rgba(190, 190, 190, 0.961);
+  cursor: pointer;
   position: relative;
   top: 25px;
   left: 25px;
@@ -142,7 +162,7 @@ a {
 .dotblue {
   height: 17px;
   width: 17px;
-  background-color: #0A95AC;
+  background-color: #00b4d3;
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -177,5 +197,9 @@ a {
     height: 360px;
     padding: 10px;
     width: 280px;
+}
+
+.mycard:hover {
+    background-color: #16abc9cb;
 }
 </style>

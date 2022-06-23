@@ -11,31 +11,6 @@
         <hr>
         </div>
 
-            <!-- charactersFilter result -->
-
-            <div class="col-lg-3 col-md-6 col-sm-12 mt-5 mb-5 d-flex justify-content-around" v-for="(filterCharacter, index) of filterCharacters" :key="index">
-                
-                    <router-link :to="`/characters/${filterCharacter.id}`">
-                    <div class="mycard text-center">
-
-
-                    <img class="imgCard" :src="filterCharacter.image" alt="">
-                    <h3 class="character-name">{{filterCharacter.name}}</h3>
-
-                    <span v-if="filterCharacter.species === 'Human'" class="dotgreen"></span>
-                    <span v-else class="dotblue"></span>
-
-                    <h3 class="character-species"> {{filterCharacter.species}}</h3>
-                    <h3 class="character-origin">{{filterCharacter.origin.name}}</h3>
-                    <br>
-                
-
-                    </div>
-                    </router-link>
-                
-
-            </div>
-            
 
             <!-- {{characters.results}} -->
 
@@ -166,7 +141,7 @@ a {
 .dotblue {
   height: 17px;
   width: 17px;
-  background-color: #0A95AC;
+  background-color: #00b4d3;
   border-radius: 50%;
   display: inline-block;
   position: relative;
@@ -201,6 +176,10 @@ a {
     height: 360px;
     padding: 10px;
     width: 280px;
+}
+
+.mycard:hover {
+    background-color: #16abc9cb;
 }
 
 div .container {
